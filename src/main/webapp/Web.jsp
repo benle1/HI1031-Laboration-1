@@ -73,7 +73,7 @@
 
             if (buttonId != null) {
                 shoppingCart.addToCart(items.get(Integer.parseInt(buttonId)));
-                session.setAttribute("test", shoppingCart);
+                session.setAttribute("cart", shoppingCart);
             }
 
             out.println(items.size());

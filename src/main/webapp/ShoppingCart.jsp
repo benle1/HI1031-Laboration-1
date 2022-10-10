@@ -16,7 +16,7 @@
     </head>
     <body>
         <h1>Welcome to the shopping cart</h1>
-        <%ShoppingCart cart  = (ShoppingCart) session.getAttribute("test");
+        <%ShoppingCart cart  = (ShoppingCart) session.getAttribute("cart");
         out.println(cart.toString());%>
     </body>
 </html>
