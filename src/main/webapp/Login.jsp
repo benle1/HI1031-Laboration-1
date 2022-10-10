@@ -4,6 +4,8 @@
     Author     : benny
 --%>
 
+<%@page import="UI.UserInfo"%>
+<%@page import="BO.UserHandler"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,14 +30,14 @@
             String password = request.getParameter("password");
 
             if (username != null && password != null) {
-                if (username.equals("benny") && password.equals("123")) {
+                UserInfo user = UserHandler.getUser(username);
+                
+                if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
                     response.sendRedirect("http://localhost:8080/HI1031_Lab1/Web.jsp");
                 } else {%>
         Invalid password or username
         <%   }
             }
-
-
         %>
 
 
