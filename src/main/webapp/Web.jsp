@@ -9,7 +9,6 @@
 <%@page import="BO.ItemHandler"%>
 <%@page import="DB.ItemDB"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="BO.ItemList"%>
 <%@page import="DB.DBManager"%>
 <%@page import="BO.Item"%>
 <%@ page import="java.sql.*" %> 
@@ -68,7 +67,7 @@
                 }
             }
 
-            String buttonId = request.getParameter("button");
+            String buttonId = request.getParameter("button"); 
 
             out.println(buttonId);
 
