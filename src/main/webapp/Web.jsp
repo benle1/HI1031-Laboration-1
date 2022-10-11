@@ -21,10 +21,27 @@
         <title>JSP Page</title>
 
         <style>
-            #myform1{float:right;}
+            #myform1{
+                position:absolute;
+                float:right;
+                top: 60px;
+                right: 16px;
+            }
+            
+            .topRight{
+                position: absolute;
+                top: 8px;
+                right: 16px;
+                font-size: 18px;
+            }
         </style>
     </head>
     <body>  
+        <%
+            ArrayList<ItemInfo> items = new ArrayList<>();
+            ShoppingCart shoppingCart = new ShoppingCart();
+        %>
+
         <h1>Hello World</h1>
         <form id="myform1" action="ShoppingCart.jsp"> 
             <input type="submit" value="Shopping cart"><br/>  
@@ -33,12 +50,15 @@
         <form action="Web.jsp" method ="post"> 
             <input type="text" placeholder="Search.." name="search">
             <input type="submit" value="Search"><br/>  
-        </form>     
+        </form>    
+
+
+
+
 
         <%
-            ArrayList<ItemInfo> items = new ArrayList<>();
-            ShoppingCart shoppingCart = new ShoppingCart();
-
+            //   ArrayList<ItemInfo> items = new ArrayList<>();
+            // ShoppingCart shoppingCart = new ShoppingCart();
             if (request.getParameter("search") != null) {
                 items = ItemHandler.getItems(request.getParameter("search"));
                 session.setAttribute("searchedItems", items);
@@ -63,7 +83,7 @@
                 <td> <form action="Web.jsp" method ="post">
                         <button type ="submit" name="button" value=<%=i%>>Add to cart</button>
                     </form></td></tr>
-            <%  } %>
+                    <%  } %>
         </table>
         <% }
 
@@ -73,9 +93,18 @@
                 shoppingCart.addToCart(items.get(Integer.parseInt(buttonId)));
                 session.setAttribute("cart", shoppingCart);
             }
+        %>
 
-            // out.println(shoppingCart.toString());
-%>
+        <div class = "topRight">
+            <p>
+                <% if (shoppingCart.getShoppingCart().isEmpty()) {%>
+                Empty cart
+                <% } else {%>
+                Number of items in cart: <%=shoppingCart.getShoppingCart().size()%>
+                <%}%>
+            </p>
+        </div>
+
 
 
     </body>
