@@ -35,7 +35,7 @@ public class ShoppingCart {
     public String toString() {
         String info="";
         for(int i=0;i<shoppingCart.size();i++){
-            info += shoppingCart.get(i).getName()+ " ";
+            info += shoppingCart.get(i).getName()+ " " + shoppingCart.get(i).getPrice() + " "+shoppingCart.get(i).getDescription()+"<br/>";
         }
         return info;
     }

@@ -41,33 +41,38 @@
             ShoppingCart shoppingCart = new ShoppingCart();
 
             if (request.getParameter("search") != null) {
-                session.setAttribute("input", request.getParameter("search"));
+                items = ItemHandler.getItems(request.getParameter("search"));
+                session.setAttribute("searchedItems", items);
+                // session.setAttribute("input", request.getParameter("search"));
             }
 
-            String input = (String) session.getAttribute("input");
-            out.println("Search: " + input);
+            // String input = (String) session.getAttribute("input");
+            items = (ArrayList) session.getAttribute("searchedItems");
+            //out.println("Search: " + input);
 
-            if (input != null) {
-                items = ItemHandler.getItems(input);
-               // out.println("item size: " + items.size() + "<br/>");
-             //   out.println("Name Price Description <br/>");
-             %>
-             <p>
-                 Name Price Description <br/>
-             </p>
-               <% for (int i = 0; i < items.size(); i++) {
-                    //out.println(items.get(i).getName() + "&nbsp;" + items.get(i).getPrice() + "&nbsp;" + items.get(i).getDescription());%>
-                    <p>
-                        <%=items.get(i).getName()+ items.get(i).getPrice()+ items.get(i).getDescription()%>
-                    </p>
+            if (items != null) {
+                out.println("items size: " + items.size());
+                //  items = ItemHandler.getItems(input);
+                // out.println("item size: " + items.size() + "<br/>");
+                //   out.println("Name Price Description <br/>");
+        %>
+        <p>
+            Name Price Description <br/>
+        </p>
+        <% for (int i = 0; i < items.size(); i++) {
+                       //out.println(items.get(i).getName() + "&nbsp;" + items.get(i).getPrice() + "&nbsp;" + items.get(i).getDescription());%>
+        <p>
+            <%=items.get(i).getName() + items.get(i).getPrice() + items.get(i).getDescription()%>
+        </p>
         <form action="Web.jsp" method ="post">
-            <input type="submit" name="button" value=<%=i%>>
+            <!--<input type="submit" name="button" value=<%=i%>> -->
+            <button type ="submit" name="button" value=<%=i%>>Add to cart</button>
         </form>
         <%
                 }
             }
 
-            String buttonId = request.getParameter("button"); 
+            String buttonId = request.getParameter("button");
 
             out.println(buttonId);
 
@@ -76,7 +81,6 @@
                 session.setAttribute("cart", shoppingCart);
             }
 
-            out.println(items.size());
             out.println(shoppingCart.toString());
         %>
 

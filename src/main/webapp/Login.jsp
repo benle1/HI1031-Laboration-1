@@ -19,11 +19,13 @@
 
 
         <form action="Login.jsp" method ="post"> 
-            Username:  
-            <input type="text"  name="username" value=""><br/>
-            Password:
-            <input type="password" name="password" value=""><br/>  
-            <input type="submit" value="LOGIN"><br/>  
+            <table>
+                <tr><td>Username:</td><td><input type="text"  name="username" value=""></td></tr>
+                <tr><td> Password:</td><td><input type="password" name="password" value=""></td></tr>
+                <tr><td><input type="submit" value="LOGIN"></td><td>
+
+            </table>
+
         </form>    
         <%
             String username = request.getParameter("username");
@@ -31,9 +33,9 @@
 
             if (username != null && password != null) {
                 UserInfo user = UserHandler.getUser(username);
-                
+
                 if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
-                    response.sendRedirect("http://localhost:8080/HI1031_Lab1/Web.jsp");
+                    response.sendRedirect("Web.jsp");
                 } else {%>
         Invalid password or username
         <%   }
