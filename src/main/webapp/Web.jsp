@@ -35,7 +35,6 @@
             <input type="submit" value="Search"><br/>  
         </form>     
 
-
         <%
             ArrayList<ItemInfo> items = new ArrayList<>();
             ShoppingCart shoppingCart = new ShoppingCart();
@@ -51,38 +50,32 @@
             //out.println("Search: " + input);
 
             if (items != null) {
-                out.println("items size: " + items.size());
+
                 //  items = ItemHandler.getItems(input);
                 // out.println("item size: " + items.size() + "<br/>");
                 //   out.println("Name Price Description <br/>");
         %>
-        <p>
-            Name Price Description <br/>
-        </p>
-        <% for (int i = 0; i < items.size(); i++) {
-                       //out.println(items.get(i).getName() + "&nbsp;" + items.get(i).getPrice() + "&nbsp;" + items.get(i).getDescription());%>
-        <p>
-            <%=items.get(i).getName() + items.get(i).getPrice() + items.get(i).getDescription()%>
-        </p>
-        <form action="Web.jsp" method ="post">
-            <!--<input type="submit" name="button" value=<%=i%>> -->
-            <button type ="submit" name="button" value=<%=i%>>Add to cart</button>
-        </form>
-        <%
-                }
-            }
+
+        <table> <tr><td>Name</td><td>Price</td><td>Description</td></tr>
+
+            <% for (int i = 0; i < items.size(); i++) {%>
+            <tr><td><%=items.get(i).getName()%></td><td><%=items.get(i).getPrice()%></td><td><%=items.get(i).getDescription()%></td>
+                <td> <form action="Web.jsp" method ="post">
+                        <button type ="submit" name="button" value=<%=i%>>Add to cart</button>
+                    </form></td></tr>
+            <%  } %>
+        </table>
+        <% }
 
             String buttonId = request.getParameter("button");
-
-            out.println(buttonId);
 
             if (buttonId != null) {
                 shoppingCart.addToCart(items.get(Integer.parseInt(buttonId)));
                 session.setAttribute("cart", shoppingCart);
             }
 
-            out.println(shoppingCart.toString());
-        %>
+            // out.println(shoppingCart.toString());
+%>
 
 
     </body>

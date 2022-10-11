@@ -16,8 +16,16 @@
     </head>
     <body>
         <h1>Welcome to the shopping cart</h1>
-        <%ShoppingCart cart  = (ShoppingCart) session.getAttribute("cart");
-        out.println(cart.toString());%>
+        <%ShoppingCart cart  = (ShoppingCart) session.getAttribute("cart");%>
+        <table> <tr><td>Name</td><td>Price</td><td>Description</td></tr>
+
+            <% for (int i = 0; i < cart.getShoppingCart().size(); i++) {%>
+            <tr><td><%=cart.getShoppingCart().get(i).getName()%></td><td><%=cart.getShoppingCart().get(i).getPrice()%></td>
+            <td><%=cart.getShoppingCart().get(i).getDescription()%></td></tr>
+
+           <%  } %>
+              
+        </table>
     </body>
 </html>
 
