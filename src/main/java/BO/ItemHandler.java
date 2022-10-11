@@ -11,8 +11,7 @@ import java.util.ArrayList;
 public class ItemHandler {
 
     public static ArrayList<ItemInfo> getItems(String input) {
-
-
+        
         ArrayList<Item> DBItems = ItemDB.getItems(input);
 
         ArrayList<ItemInfo> copyOfItems = new ArrayList<>();
