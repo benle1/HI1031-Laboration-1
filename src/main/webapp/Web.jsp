@@ -45,8 +45,6 @@
         </form>    
 
         <%
-            //Kollar om nån har sökt något. Om någon har gjort det så hämta items 
-            //arraylist från DB och stoppa in det i en session variable
             if (request.getParameter("search") != null) {
                 items = ItemHandler.getItems(request.getParameter("search"));
                 session.setAttribute("searchedItems", items);

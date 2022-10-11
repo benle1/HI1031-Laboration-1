@@ -17,11 +17,9 @@
             </table>
         </form>    
         <%
-            // Hämtar username och password från input field
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
-            //Kollar om username och password är tomma annars hämta användare från DB
             if (username != null && password != null) {
                 UserInfo user = UserHandler.getUser(username);
 
