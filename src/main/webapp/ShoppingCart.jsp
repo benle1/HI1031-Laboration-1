@@ -1,9 +1,3 @@
-<%-- 
-    Document   : ShoppingCart
-    Created on : 3 okt. 2022, 12:23:31
-    Author     : benny
---%>
-
 <%@page import="UI.ShoppingCart"%>
 <%@page import="UI.ItemInfo"%>
 <%@page import="java.util.ArrayList"%>
@@ -16,15 +10,17 @@
     </head>
     <body>
         <h1>Welcome to the shopping cart</h1>
-        <%ShoppingCart cart  = (ShoppingCart) session.getAttribute("cart");%>
-        <table> <tr><td>Name</td><td>Price</td><td>Description</td></tr>
+        <%ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");%>
+        <table> 
+            <tr><td>Name</td><td>Price</td><td>Description</td></tr>
 
             <% for (int i = 0; i < cart.getShoppingCart().size(); i++) {%>
-            <tr><td><%=cart.getShoppingCart().get(i).getName()%></td><td><%=cart.getShoppingCart().get(i).getPrice()%></td>
-            <td><%=cart.getShoppingCart().get(i).getDescription()%></td></tr>
-
-           <%  } %>
-              
+            <tr>
+                <td><%=cart.getShoppingCart().get(i).getName()%></td>
+                <td><%=cart.getShoppingCart().get(i).getPrice()%></td>
+                <td><%=cart.getShoppingCart().get(i).getDescription()%></td>
+            </tr>
+            <%  }%>
         </table>
     </body>
 </html>

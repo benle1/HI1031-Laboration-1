@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Test
-    Created on : 3 okt. 2022, 11:47:24
-    Author     : benny
---%>
-
 <%@page import="UI.ShoppingCart"%>
 <%@page import="UI.ItemInfo"%>
 <%@page import="BO.ItemHandler"%>
@@ -25,7 +19,7 @@
                 top: 60px;
                 right: 16px;
             }
-            
+
             .topRight{
                 position: absolute;
                 top: 8px;
@@ -50,11 +44,9 @@
             <input type="submit" value="Search"><br/>  
         </form>    
 
-
-
-
-
         <%
+            //Kollar om nån har sökt något. Om någon har gjort det så hämta items 
+            //arraylist från DB och stoppa in det i en session variable
             if (request.getParameter("search") != null) {
                 items = ItemHandler.getItems(request.getParameter("search"));
                 session.setAttribute("searchedItems", items);
@@ -65,13 +57,20 @@
             if (items != null) {
         %>
 
-        <table> <tr><td>Name</td><td>Price</td><td>Description</td></tr>
+        <table> 
+            <tr><td>Name</td><td>Price</td><td>Description</td></tr>
 
             <% for (int i = 0; i < items.size(); i++) {%>
-            <tr><td><%=items.get(i).getName()%></td><td><%=items.get(i).getPrice()%></td><td><%=items.get(i).getDescription()%></td>
-                <td> <form action="Web.jsp" method ="post">
+            <tr>
+                <td><%=items.get(i).getName()%></td>
+                <td><%=items.get(i).getPrice()%></td>
+                <td><%=items.get(i).getDescription()%></td>
+                <td>
+                    <form action="Web.jsp" method ="post">
                         <button type ="submit" name="button" value=<%=i%>>Add to cart</button>
-                    </form></td></tr>
+                    </form>
+                </td>
+            </tr>
                     <%  } %>
         </table>
         <% }
