@@ -7,9 +7,7 @@
 <%@page import="UI.ShoppingCart"%>
 <%@page import="UI.ItemInfo"%>
 <%@page import="BO.ItemHandler"%>
-<%@page import="DB.ItemDB"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DB.DBManager"%>
 <%@page import="BO.Item"%>
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %> 
@@ -42,7 +40,7 @@
             ShoppingCart shoppingCart = new ShoppingCart();
         %>
 
-        <h1>Hello World</h1>
+        <h1>Search The Catalog</h1>
         <form id="myform1" action="ShoppingCart.jsp"> 
             <input type="submit" value="Shopping cart"><br/>  
         </form> 
@@ -57,23 +55,14 @@
 
 
         <%
-            //   ArrayList<ItemInfo> items = new ArrayList<>();
-            // ShoppingCart shoppingCart = new ShoppingCart();
             if (request.getParameter("search") != null) {
                 items = ItemHandler.getItems(request.getParameter("search"));
                 session.setAttribute("searchedItems", items);
-                // session.setAttribute("input", request.getParameter("search"));
             }
 
-            // String input = (String) session.getAttribute("input");
             items = (ArrayList) session.getAttribute("searchedItems");
-            //out.println("Search: " + input);
 
             if (items != null) {
-
-                //  items = ItemHandler.getItems(input);
-                // out.println("item size: " + items.size() + "<br/>");
-                //   out.println("Name Price Description <br/>");
         %>
 
         <table> <tr><td>Name</td><td>Price</td><td>Description</td></tr>
@@ -86,7 +75,6 @@
                     <%  } %>
         </table>
         <% }
-
             String buttonId = request.getParameter("button");
 
             if (buttonId != null) {
@@ -104,8 +92,5 @@
                 <%}%>
             </p>
         </div>
-
-
-
     </body>
 </html>
