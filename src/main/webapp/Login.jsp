@@ -27,7 +27,7 @@
                     response.sendRedirect("Web.jsp");
                 } else {%>
         Invalid password or username
-        <%   }
+        <%      }
             }
         %>
     </body>

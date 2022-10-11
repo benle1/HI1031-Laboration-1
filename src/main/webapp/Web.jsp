@@ -69,9 +69,9 @@
                     </form>
                 </td>
             </tr>
-                    <%  } %>
+            <%  } %>
         </table>
-        <% }
+        <%  }
             String buttonId = request.getParameter("button");
 
             if (buttonId != null) {
