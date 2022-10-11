@@ -17,10 +17,6 @@ public class ItemHandler {
 
         ArrayList<ItemInfo> copyOfItems = new ArrayList<>();
         
-        // iterera igenom it.hasnext it.iteration
-        /* Item item= (Item) i;
-             i.add( copyOfItems.add(new ItemInfo(item.getName(),item.getDescription(),item.getPrice()));)
-        }*/
         for (int i = 0; i < DBItems.size(); i++) {
             Item item = DBItems.get(i);
             copyOfItems.add(new ItemInfo(item.getName(), item.getDescription(), item.getPrice()));
