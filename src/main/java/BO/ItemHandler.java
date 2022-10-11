@@ -10,6 +10,11 @@ import java.util.ArrayList;
  */
 public class ItemHandler {
 
+    /**
+     * Hämtar items från databasen och returnerar en kopia av items.
+     * @param input Användarens input från en search bar
+     * @return 
+     */
     public static ArrayList<ItemInfo> getItems(String input) {
         
         ArrayList<Item> DBItems = ItemDB.getItems(input);

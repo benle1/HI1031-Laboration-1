@@ -9,6 +9,12 @@ import java.sql.ResultSet;
  * @author Benny & Chris
  */
 public class UserDB {
+    
+    /**
+     * Gör ett anrop mot databasen och returnerar användarens information
+     * @param input Användarens username
+     * @return 
+     */
         public static User getUser(String input) {
             
         User user = new User(null,null);

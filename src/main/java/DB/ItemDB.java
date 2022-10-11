@@ -11,6 +11,11 @@ import java.util.ArrayList;
  */
 public class ItemDB {
 
+    /**
+     * Metoden gör ett anrop till databasen för att returnera en arraylist av items
+     * @param input Användarens input från en search bar
+     * @return 
+     */
     public static ArrayList<Item> getItems(String input) {
         ArrayList<Item> itemList = new ArrayList<>();
         try {

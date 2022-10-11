@@ -12,6 +12,9 @@ public class DBManager {
     private Connection con = null;
     private static DBManager instance = null;
 
+    /**
+     * Skapar en connection till databasen
+     */
      private DBManager() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -25,6 +28,11 @@ public class DBManager {
         }
 
     }
+     
+     /**
+      * Skapar en instans av DBmanager om den inte existerar
+      * @return 
+      */
     private static DBManager getInstance(){
         if(instance == null){
             instance = new DBManager();
@@ -32,7 +40,10 @@ public class DBManager {
         return instance;
     }
    
-    
+   /**
+    * Returnerar en connection till databasen
+    * @return 
+    */ 
     public static Connection getConnection(){
         
         return getInstance().con;
